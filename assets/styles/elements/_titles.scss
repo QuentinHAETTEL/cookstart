@@ -1,0 +1,17 @@
+@use '../settings/colors' as *;
+@use '../tools/media-query' as *;
+
+
+h2, .h2 {
+    margin: 15px 0;
+    font-size: 30px;
+    color: $secondary-color-second;
+    @include media('>tablet') {
+        margin: 20px 0;
+        font-size: 55px;
+    }
+    @include media('>phone') {
+        margin: 25px 0;
+        font-size: 40px;
+    }
+}

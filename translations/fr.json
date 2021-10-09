@@ -1,0 +1,28 @@
+{
+    "global": {
+        "goBack": "Retour",
+        "confirm": "Valider"
+    },
+    "auth": {
+        "hello": "Hello",
+        "infoText": "Même si vous n'avez pas encore de compte, renseignez votre adresse email pour que nous puissions réaliser la création de votre compte",
+        "email": "Adresse email",
+        "registerLogin": "S'inscrire / Se connecter",
+        "firstname": "Prénom",
+        "name": "Nom",
+        "password": "Mot de passe",
+        "passwordConfirmation": "Confirmation mot de passe",
+        "passwordHelp": "Le mot de passe doit contenir au minimum 8 caractères, une minuscule, une majuscule et un chiffre.",
+        "passwordLow": "Mot de passe faible",
+        "passwordMedium": "Mot de passe moyen",
+        "passwordStrong": "Mot de passe fort",
+        "passwordExcellent": "Mot de passe excellent",
+        "showPassword": "Voir le mot de passe",
+        "register": "S'inscrire",
+        "login": "Se connecter",
+        "forgotPassword": "Mot de passe oublié",
+        "confirmAccount": "Confirmer le compte",
+        "newPassword": "Nouveau mot de passe",
+        "reset": "Réintialisation"
+    }
+}

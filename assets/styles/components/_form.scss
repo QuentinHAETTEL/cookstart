@@ -1,0 +1,112 @@
+@use '../settings/borders' as *;
+@use '../settings/colors' as *;
+@use '../settings/fonts' as *;
+@use '../settings/sizing' as *;
+@use '../tools/display' as *;
+@use '../tools/media-query' as *;
+@use '../tools/shadow' as *;
+
+
+@mixin successErrorInput {
+    padding: 0 45px 0 20px;
+    background-repeat: no-repeat;
+    background-size: 5%;
+    background-position: 95%;
+}
+
+@mixin showHideInput {
+    position: absolute;
+    top: 20px;
+    right: -20px;
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    @include media('>phone') {
+        right: -30px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+.form {
+    @include flex($direction:column, $justify:center, $align:center);
+    width: 100%;
+
+    &__row {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    &__input {
+        min-width: $input-min-width-mobile;
+        height: $input-min-height-mobile;
+        padding: 0 20px;
+        border: solid 3px $secondary-color-second;
+        border-radius: $border-radius-small;
+        font-size: 16px;
+        @include media('>phone') {
+            min-width: $input-min-width;
+            height: $input-min-height;
+            font-size: 20px;
+        }
+        &--success {
+            @include successErrorInput;
+            background-image: url('../images/icons/check.svg');
+        }
+        &--error {
+            @include successErrorInput;
+            background-image: url('../images/icons/close.svg');
+        }
+        &--show {
+            @include showHideInput;
+            background-image: url('../images/icons/show.svg');
+        }
+        &--hide {
+            @include showHideInput;
+            background-image: url('../images/icons/hide.svg');
+        }
+    }
+
+    &__button {
+        min-width: $input-min-width-mobile;
+        @include media('>phone') {
+            min-width: $input-min-width;
+        }
+    }
+
+    &__text {
+        max-width: $input-min-width;
+        margin: 0 0 20px 0;
+        text-align: center;
+        font-size: $small-font;
+    }
+}
+
+.form--animated {
+    .form__label {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        transition: all 0.2s;
+        @include media('>phone') {
+            top: 20px;
+        }
+    }
+
+    .form__input, .form__textarea, .form__select {
+        outline: $secondary-color-second;
+        &:focus, &:not(:placeholder-shown) {
+            ~ .form__label {
+                top: -10px;
+                display: block;
+                padding: 3px 10px;
+                color: $white;
+                background-color: $secondary-color-second;
+                border-radius: 5px;
+            }
+        }
+    }
+}

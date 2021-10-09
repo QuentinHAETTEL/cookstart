@@ -1,0 +1,28 @@
+@use '../settings/colors' as *;
+@use '../settings/borders' as *;
+@use '../tools/display' as *;
+@use '../tools/effects' as *;
+@use '../tools/shadow' as *;
+
+
+button, .button {
+    @include flex($justify:center, $align:center);
+    width: 180px;
+    height: 50px;
+    color: $black;
+    background-color: $secondary-color-second;
+    border: solid 1px $secondary-color-second;
+    border-radius: $border-radius-small;
+    font-size: 1em;
+    text-decoration: none;
+    @include shadowSmall();
+    cursor: pointer;
+    @include hover {
+        background-color: darken($secondary-color-second, 10%);
+        box-shadow: none;
+    }
+    &:disabled, .disabled {
+        filter: grayscale(75%);
+        cursor: not-allowed;
+    }
+}

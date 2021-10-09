@@ -1,0 +1,117 @@
+@use '../settings/borders' as *;
+@use '../settings/colors' as *;
+@use '../settings/fonts' as *;
+@use '../settings/sizing' as *;
+@use '../tools/display' as *;
+@use '../tools/effects' as *;
+@use '../tools/media-query' as *;
+@use '../tools/shadow' as *;
+
+
+.box {
+    @include flex($direction:column);
+    width: 100%;
+    margin: 30px 0;
+    background-color: #FFF;
+    border-radius: $border-radius;
+    @include shadowLarge();
+    @include media('>tablet') {
+        @include flex($direction:row);
+        min-height: 75vh;
+        margin: initial;
+    }
+
+    &__column {
+        position: relative;
+        @include flex($direction:column, $justify:flex-start, $align:center);
+        padding: $box-padding / 3;
+        border-radius: $border-radius;
+        @include media('>tablet') {
+            width: 50%;
+            padding: $box-padding;
+        }
+        &:first-of-type {
+            @include shadow('right', $border-radius);
+        }
+
+        &--image {
+            @include flex($justify:stretch, $align:stretch);
+            padding: 0;
+            img {
+                width: auto;
+                min-width: 100%;
+                height: 250px;
+                min-height: 100%;
+                border-radius: $border-radius;
+                @include media('>phone') {
+                    height: 400px;
+                }
+                @include media('>tablet') {
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    &__link, &__link:visited {
+        margin-top: 25px;
+        padding-bottom: 4px;
+        color: $black;
+        font-size: $small-font;
+        text-decoration: none;
+        @include hover-active {
+            border-bottom: solid 1px $black;
+        }
+    }
+
+    &__info {
+        position: absolute;
+        color: $secondary-color-second;
+        font-size: $large-font;
+        cursor: pointer;
+        @include media('>phone') {
+            font-size: $xlarge-font;
+        }
+        &--top-left {
+            top: $box-padding - 40px;
+            left: $box-padding - 40px;
+            @include media('>phone') {
+                top: $box-padding - 20px;
+                left: $box-padding - 20px;
+            }
+        }
+        &--bottom-right {
+            bottom: $box-padding - 50px;
+            right: $box-padding - 40px;
+            @include media('>phone') {
+                bottom: $box-padding - 20px;
+                right: $box-padding - 20px;
+            }
+        }
+        &--text {
+            position: absolute;
+            top: -100px;
+            left: -230px;
+            @include flex($direction:column, $justify:center, $align:flex-start);
+            width: 250px;
+            height: 100px;
+            padding: 10px;
+            color: $white;
+            background-color: $black-75;
+            border-radius: $border-radius;
+            font-family: $second-font;
+            font-size: $xsmall-font;
+            @include media('>phone') {
+                top: -85px;
+                left: -265px;
+                background-color: $black-50;
+            }
+        }
+
+        *[class^="fa"], *[class*="fa"] {
+            @include hover {
+                color: darken($secondary-color-second, 10%);
+            }
+        }
+    }
+}

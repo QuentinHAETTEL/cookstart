@@ -1,0 +1,52 @@
+@mixin shadowLarge($direction:'all', $border-radius:'none') {
+    box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.5);
+    @include limitSide($direction, 35px, $border-radius);
+}
+
+
+@mixin shadow($direction:'all', $border-radius:'none') {
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    @include limitSide($direction, 25px, $border-radius);
+}
+
+
+@mixin shadowSmall($direction:'all',$border-radius:'none') {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    @include limitSide($direction, 5px, $border-radius);
+}
+
+
+@mixin limitSide($direction, $size, $radius) {
+    @if $direction == 'top' {
+        @if $radius != 'none' {
+            clip-path: inset(-#{$size + 5px} 0 0 0 round $radius);
+        }
+        @else {
+            clip-path: inset(-#{$size + 5px} 0 0 0);
+        }
+    }
+    @else if $direction == 'right' {
+        @if $radius != 'none' {
+            clip-path: inset(0 -#{$size + 5px} 0 0 round $radius);
+        }
+        @else {
+            clip-path: inset(0 -#{$size + 5px} 0 0);
+        }
+    }
+    @else if $direction == 'bottom' {
+        @if $radius != 'none' {
+            clip-path: inset(0 0 -#{$size + 5px} 0 round $radius);
+        }
+        @else {
+            clip-path: inset(0 0 -#{$size + 5px} 0);
+        }
+    }
+    @else if $direction == 'left' {
+        @if $radius != 'none' {
+            clip-path: inset(0 0 0 -#{$size + 5px} round radius);
+        }
+        @else {
+            clip-path: inset(0 0 0 -#{$size + 5px});
+        }
+    }
+}

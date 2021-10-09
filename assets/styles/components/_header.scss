@@ -1,0 +1,9 @@
+@use '../settings/sizing' as *;
+
+
+header {
+    width: 100vw;
+    height: $header-height;
+    padding: 20px 100px;
+    background-color: red;
+}
