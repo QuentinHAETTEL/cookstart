@@ -1,0 +1,47 @@
+@mixin hover {
+    &:hover {
+        @content;
+    }
+}
+
+
+@mixin active {
+    &:active {
+        @content;
+    }
+}
+
+
+@mixin focus {
+    &:focus {
+        @content;
+    }
+}
+
+
+@mixin visited {
+    &:visited {
+        @content;
+    }
+}
+
+
+@mixin hover-active {
+    &:hover, &:active {
+        @content;
+    }
+}
+
+
+@mixin hover-active-focus-visited {
+    &:hover, &:active, &:focus, &:visited {
+        @content;
+    }
+}
+
+
+@mixin disabled {
+    &:disabled {
+        @content;
+    }
+}

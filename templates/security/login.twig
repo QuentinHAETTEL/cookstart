@@ -1,0 +1,26 @@
+{% extends 'security/index.twig' %}
+
+
+{% block box %}
+    <a class="box__info box__info--top-left" href="{{ app.baseUrl }}/register-login/" title="{{ 'global.goBack'|trans }}">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+
+    <h2>{{ 'auth.hello'|trans }} {{ firstname }}</h2>
+    <form id="login-form" class="form form--animated" method="POST" action="">
+        <p class="flash" data-message> </p>
+
+        <input name="email" type="hidden" value="{{ email }}" />
+
+        <div class="form__row">
+            <input id="login-password" class="form__input" name="password" type="password" placeholder="" required />
+            <span class="form__input--show" data-password="login-password" title="{{ 'auth.showPassword'|trans }}"></span>
+            <label for="login-password" class="form__label">{{ 'auth.password'|trans }}</label>
+        </div>
+
+        <div class="form__row">
+            <button class="form__button" type="submit">{{ 'auth.login'|trans }}</button>
+        </div>
+    </form>
+    <a id="reset-link" class="box__link" href="{{ app.baseUrl }}/reset-password">{{ 'auth.forgotPassword'|trans }}</a>
+{% endblock %}

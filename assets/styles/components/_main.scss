@@ -1,0 +1,12 @@
+@use '../settings/colors' as *;
+@use '../settings/sizing' as *;
+
+
+.main {
+    min-height: calc(100vh - #{$header-height});
+
+    &--light {
+        min-height: 100vh;
+        background-color: $secondary-color-second;
+    }
+}

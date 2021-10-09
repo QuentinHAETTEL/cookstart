@@ -1,0 +1,16 @@
+@use '../tools/display' as *;
+@use '../tools/media-query' as *;
+
+
+.container {
+    &--light {
+        @include flex($justify:stretch, $align:center);
+        width: 80vw;
+        min-height: 100vh;
+        margin: auto;
+        @include media('>tablet') {
+            width: 70vw;
+            min-width: 1000px;
+        }
+    }
+}

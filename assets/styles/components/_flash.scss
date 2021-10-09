@@ -1,0 +1,16 @@
+@use '../settings/colors' as *;
+
+
+.flash {
+    margin-bottom: 15px;
+
+    &--error {
+        color: $error-color;
+    }
+    &--warning {
+        color: $warning-color;
+    }
+    &--success {
+        color: $success-color;
+    }
+}
