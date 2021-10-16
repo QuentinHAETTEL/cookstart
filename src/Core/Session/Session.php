@@ -2,16 +2,13 @@
 
 namespace App\Core\Session;
 
-use App\Core\BaseController;
-
-class Session extends BaseController
+class Session
 {
     private static ?Session $instance = null;
 
 
     public function __construct()
     {
-        parent::__construct();
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }

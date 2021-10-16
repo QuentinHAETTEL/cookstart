@@ -9,7 +9,6 @@ use App\Core\Mail\MailService;
 use App\Core\Renderer\RendererInterface;
 use App\Core\Validator\Validator;
 use App\Core\Database\QueryBuilder;
-use App\Core\Session\Session;
 use App\Entities\User;
 use Exception;
 use Twig\Error\LoaderError;
@@ -21,8 +20,6 @@ class AuthController extends BaseController
     private TokenController $tokenController;
     private SecurityController $securityController;
     private MailService $mailService;
-    private Session $session;
-    private User $user;
     private array $messages = [
         'errorServer' => 'Une erreur est survenue, veuillez réessayer',
         'alreadyExist' => 'Cette adresse email est déjà utilisée',
@@ -48,7 +45,6 @@ class AuthController extends BaseController
         $this->tokenController = new TokenController();
         $this->securityController = new SecurityController();
         $this->mailService = new MailService();
-        $this->session = Session::getInstance();
         $this->user = new User();
     }
 

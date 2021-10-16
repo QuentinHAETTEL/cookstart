@@ -4,6 +4,7 @@ namespace App\Entities;
 
 use App\Core\BaseEntity;
 use App\Core\Data\DataTransformer;
+use App\Core\Security\AuthController;
 use App\Core\Validator\Validator;
 use App\Core\Database\QueryBuilder;
 use DateTime;
@@ -226,6 +227,19 @@ class User extends BaseEntity
             ->execute();
 
         return (int)$result->number === 1;
+    }
+
+
+    public function isGranted(string $role): bool
+    {
+        $authController = new AuthController();
+        if ($authController->isAuthenticated()) {
+            if ($this->hasRole(strtoupper($role))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
