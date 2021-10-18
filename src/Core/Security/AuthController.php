@@ -125,7 +125,7 @@ class AuthController extends BaseController
             );
         } else {
             $response = new Response();
-            return $response->redirect(BASE_URL.'/register-login/');
+            return $response->redirectToLogin();
         }
     }
 
@@ -141,7 +141,7 @@ class AuthController extends BaseController
         if (!$this->isAuthenticated()) {
             if ($this->session->getSession('email') === null) {
                 $response = new Response();
-                return $response->redirect(BASE_URL.'/register-login');
+                return $response->redirectToLogin();
             } else {
                 return $this->renderer->render('security/register', ['email' => $this->session->getSession('email')]);
             }
@@ -337,7 +337,7 @@ class AuthController extends BaseController
         $this->session->deleteSession('auth');
 
         $response = new Response();
-        return $response->redirect(BASE_URL.'/register-login');
+        return $response->redirectToLogin();
     }
 
 

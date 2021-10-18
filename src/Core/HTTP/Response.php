@@ -27,8 +27,13 @@ class Response
 
     public function redirectToHomepage(): self
     {
-        $this->redirect(BASE_URL);
-        return $this;
+        return $this->redirect(BASE_URL);
+    }
+
+
+    public function redirectToLogin(): self
+    {
+        return $this->redirect(BASE_URL.'/register-login/');
     }
 
 
