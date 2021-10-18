@@ -53,8 +53,7 @@ class Database
         if ($class === null) {
             $q->setFetchMode(PDO::FETCH_OBJ);
         } else {
-            $entity = new $class();
-            $q->setFetchMode(PDO::FETCH_INTO, $entity);
+            $q->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, $class);
         }
         if ($one) {
             $data = $q->fetch();

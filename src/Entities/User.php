@@ -17,7 +17,7 @@ class User extends BaseEntity
     private ?string $lastname = null;
     private ?string $email = null;
     private ?string $password = null;
-    private array $roles = [];
+    private array $userroles = [];
     private ?string $lastLogin = null;
     private ?string $confirmedAt = null;
     private ?int $numberLogin = null;
@@ -110,7 +110,7 @@ class User extends BaseEntity
 
     public function getRoles(): array
     {
-        return $this->roles;
+        return $this->userroles;
     }
 
 
@@ -121,10 +121,10 @@ class User extends BaseEntity
     public function setRoles($roles): self
     {
         if (is_array($roles)) {
-            $this->roles = $roles;
+            $this->userroles = $roles;
         } else {
             $dataTransformer = new DataTransformer();
-            $this->roles = $dataTransformer->stringArrayToArray($roles);
+            $this->userroles = $dataTransformer->stringArrayToArray($roles);
         }
         return $this;
     }
@@ -132,12 +132,12 @@ class User extends BaseEntity
 
     public function addRoles(array $roles): self
     {
-        if ($this->roles[0] === '') {
-            array_shift($this->roles);
+        if ($this->userroles[0] === '') {
+            array_shift($this->userroles);
         }
         foreach ($roles as $role) {
-            if (!in_array($role, $this->roles)) {
-                $this->roles[] = $role;
+            if (!in_array($role, $this->userroles)) {
+                $this->userroles[] = $role;
             }
         }
 
