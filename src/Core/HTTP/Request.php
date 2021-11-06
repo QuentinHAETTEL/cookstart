@@ -56,4 +56,13 @@ class Request
         }
         return $_POST[$key];
     }
+
+
+    public function getFilesData(?string $key = null): array
+    {
+        if ($key === null) {
+            return $_FILES;
+        }
+        return $_FILES[$key];
+    }
 }
