@@ -4,6 +4,7 @@ namespace App\Core\Router;
 
 use App\Core\HTTP\Request;
 use App\Core\HTTP\Response;
+use App\Core\Renderer\RendererInterface;
 
 class Router
 {
@@ -52,8 +53,9 @@ class Router
 
     /**
      * @throws RouterException
+     * @return Response|RendererInterface
      */
-    public function run(): Response
+    public function run()
     {
         $request = new Request();
         if (!isset($this->routes[$request->getMethod()])) {

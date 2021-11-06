@@ -2,6 +2,9 @@
 
 namespace App\Core\Router;
 
+use App\Core\HTTP\Response;
+use App\Core\Renderer\RendererInterface;
+
 class Route
 {
     private string $path;
@@ -52,7 +55,7 @@ class Route
 
 
     /**
-     * @return mixed
+     * @return Response|RendererInterface
      */
     public function call()
     {
