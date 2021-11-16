@@ -1,0 +1,18 @@
+<ul id="menu" class="menu">
+    <li class="menu__item {% if app.uri == app.baseUrl ~ '/ingredients/' %}menu__item--active{% endif %}">
+        <a class="menu__link" href="{{ app.baseUrl }}/ingredients/">
+            <div class="menu__icon">
+                <img src="{{ app.baseUrl }}/images/icons/ingredients.svg" alt="{{ 'assets.ingredientsIconAlt'|trans }}" />
+            </div>
+            <span class="menu__name">{{ 'menu.ingredients'|trans }}</span>
+        </a>
+    </li>
+    <li class="menu__item {% if app.uri == app.baseUrl ~ '/recipes/' %}menu__item--active{% endif %}">
+        <a class="menu__link" href="{{ app.baseUrl }}/recipes/">
+            <div class="menu__icon">
+                <img src="{{ app.baseUrl }}/images/icons/recipes.svg" alt="{{ 'assets.recipesIconAlt'|trans }}" />
+            </div>
+            <span class="menu__name">{{ 'menu.recipes'|trans }}</span>
+        </a>
+    </li>
+</ul>

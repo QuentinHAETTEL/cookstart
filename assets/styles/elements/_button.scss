@@ -1,14 +1,18 @@
-@use '../settings/colors' as *;
 @use '../settings/borders' as *;
+@use '../settings/colors' as *;
+@use '../settings/sizing' as *;
 @use '../tools/display' as *;
 @use '../tools/effects' as *;
+@use '../tools/media-query' as *;
 @use '../tools/shadow' as *;
 
 
 button, .button {
     @include flex($justify:center, $align:center);
-    width: 180px;
-    height: 50px;
+    min-width: 100%;
+    height: $button-height;
+    margin: 10px;
+    padding: 10px 50px;
     color: $black;
     background-color: $secondary-color-second;
     border: solid 1px $secondary-color-second;
@@ -21,8 +25,51 @@ button, .button {
         background-color: darken($secondary-color-second, 10%);
         box-shadow: none;
     }
+    @include media('>phone') {
+        min-width: 200px;
+    }
     &:disabled, .disabled {
         filter: grayscale(75%);
         cursor: not-allowed;
+    }
+
+    &--error {
+        color: $white;
+        background-color: $error-color;
+        border-color: $error-color;
+        @include hover {
+            background-color: darken($error-color, 10%);
+        }
+    }
+
+    &--success {
+        color: $white;
+        background-color: $success-color;
+        border-color: $success-color;
+        @include hover {
+            background-color: darken($success-color, 10%);
+        }
+    }
+
+    &--full {
+        width: 100%;
+    }
+
+    &--no-style {
+        min-width: $button-height;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        @include hover {
+            background-color: transparent;
+        }
+
+        img {
+            width: 40px;
+            max-height: 40px;
+            margin-bottom: 5px;
+        }
     }
 }

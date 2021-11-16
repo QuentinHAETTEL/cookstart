@@ -1,9 +1,14 @@
 @use '../settings/sizing' as *;
+@use '../tools/display' as *;
 
 
-header {
+.header {
+    @include flex($justify:space-between);
     width: 100vw;
     height: $header-height;
-    padding: 20px 100px;
-    background-color: red;
+    padding: 20px 10px;
+
+    &__button {
+        @include flex($direction:column);
+    }
 }

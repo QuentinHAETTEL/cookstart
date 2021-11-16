@@ -7,24 +7,24 @@
     </a>
 
     <h2>{{ 'auth.hello'|trans }}</h2>
-    <form id="register-form" class="form form--animated" method="POST" action="">
+    <form id="register-form" class="form form--small form--animated" method="POST" action="">
         <p class="flash" data-message></p>
 
         <input name="email" type="hidden" placeholder="Email" value="{{ email }}" />
 
-        <div class="form__row">
+        <div class="row">
             <input id="register-firstname" class="form__input" name="firstname" type="text" placeholder="" required />
             <label for="register-firstname" class="form__label">{{ 'auth.firstname'|trans }}</label>
         </div>
 
-        <div class="form__row">
+        <div class="row">
             <input id="register-lastname" class="form__input" name="lastname" type="text" placeholder="" required />
             <label for="register-lastname" class="form__label">{{ 'auth.name'|trans }}</label>
         </div>
 
         <p id="register-password-help" class="form__text hidden">{{ 'auth.passwordHelp'|trans }}</p>
 
-        <div class="form__row">
+        <div class="row">
             <input id="register-password" class="form__input" name="password" type="password" placeholder="" required data-visible="register-password-help" />
             <span class="form__input--show" data-password="register-password" title="{{ 'auth.showPassword'|trans }}"></span>
             <label for="register-password" class="form__label">{{ 'auth.password'|trans }}</label>
@@ -36,14 +36,12 @@
             </div>
         </div>
 
-        <div class="form__row">
+        <div class="row">
             <input id="register-confirmation" class="form__input" name="password_confirmation" type="password" placeholder="" required />
             <span class="form__input--show" data-password="register-confirmation" title="{{ 'auth.showPassword'|trans }}"></span>
             <label for="register-confirmation" class="form__label">{{ 'auth.passwordConfirmation'|trans }}</label>
         </div>
 
-        <div class="form__row">
-            <button class="form__button" type="submit">{{ 'auth.register'|trans }}</button>
-        </div>
+        <button class="button" type="submit">{{ 'auth.register'|trans }}</button>
     </form>
 {% endblock %}

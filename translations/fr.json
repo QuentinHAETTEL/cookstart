@@ -24,5 +24,14 @@
         "confirmAccount": "Confirmer le compte",
         "newPassword": "Nouveau mot de passe",
         "reset": "Réintialisation"
+    },
+    "assets": {
+        "menuIconAlt": "Icône menu",
+        "ingredientsIconAlt": "Icône ingrédient",
+        "recipesIconAlt": "Icône recette"
+    },
+    "menu": {
+        "ingredients": "Ingrédients",
+        "recipes": "Recettes"
     }
 }

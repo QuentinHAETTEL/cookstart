@@ -11,17 +11,15 @@
         <div class="box__column">
             {% block box %}
                 <h2>{{ 'auth.hello'|trans }}</h2>
-                <form id="register-login-form" class="form form--animated" method="POST" action="">
+                <form id="register-login-form" class="form form--small form--animated" method="POST" action="">
                     <p class="flash" data-message></p>
 
-                    <div class="form__row">
+                    <div class="row">
                         <input id="register-login-email" class="form__input" name="email" type="email" placeholder="" value="{{ email }}" />
                         <label for="register-login-email" class="form__label">{{ 'auth.email'|trans }}</label>
                     </div>
 
-                    <div class="form__row">
-                        <button class="form__button" type="submit">{{ 'auth.registerLogin'|trans }}</button>
-                    </div>
+                    <button class="button" type="submit">{{ 'auth.registerLogin'|trans }}</button>
                 </form>
 
                 <div class="box__info box__info--bottom-right" data-visible="register-login-info">

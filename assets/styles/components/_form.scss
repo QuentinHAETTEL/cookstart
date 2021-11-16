@@ -5,6 +5,7 @@
 @use '../tools/display' as *;
 @use '../tools/media-query' as *;
 @use '../tools/shadow' as *;
+@use '../tools/transition' as *;
 
 
 @mixin successErrorInput {
@@ -33,24 +34,36 @@
 
 .form {
     @include flex($direction:column, $justify:center, $align:center);
-    width: 100%;
 
-    &__row {
-        position: relative;
-        margin-bottom: 20px;
-    }
-
-    &__input {
+    &__input, &__textarea, &__select {
         min-width: $input-min-width-mobile;
-        height: $input-min-height-mobile;
+        height: $input-height-mobile;
         padding: 0 20px;
         border: solid 3px $secondary-color-second;
         border-radius: $border-radius-small;
-        font-size: 16px;
+        font-size: 16px !important;
         @include media('>phone') {
             min-width: $input-min-width;
-            height: $input-min-height;
+            height: $input-height;
             font-size: 20px;
+        }
+        &[type="file"] {
+            position: relative;
+            padding-top: 15px !important;
+            cursor: pointer;
+            &::file-selector-button,
+            &::-webkit-file-upload-button {
+                position: absolute;
+                top: -0.20rem;
+                right: -0.40rem;
+                height: $input-height-mobile;
+                border: none;
+                color: $white;
+                background-color: $secondary-color-second;
+                @include media('>phone') {
+                    height: $input-height;
+                }
+            }
         }
         &--success {
             @include successErrorInput;
@@ -70,10 +83,24 @@
         }
     }
 
-    &__button {
-        min-width: $input-min-width-mobile;
+    &__textarea {
+        height: $textarea-height-mobile;
+        resize: none;
         @include media('>phone') {
-            min-width: $input-min-width;
+            height: $textarea-height;
+        }
+    }
+
+    &__select {
+        appearance: none;
+        &::-ms-expand {
+            display: none;
+        }
+        &--arrow {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translate(0, -50%);
         }
     }
 
@@ -90,7 +117,7 @@
         position: absolute;
         top: 15px;
         left: 15px;
-        transition: all 0.2s;
+        @include transitionFast();
         @include media('>phone') {
             top: 20px;
         }
@@ -108,5 +135,29 @@
                 border-radius: 5px;
             }
         }
+    }
+
+    .form__textarea {
+        padding: 20px;
+    }
+}
+
+.form--small {
+    .form__input, .form__textarea, .form__select {
+        min-width: $input-small-min-width-mobile;
+        height: $input-height-mobile;
+        padding: 0 20px;
+        border: solid 3px $secondary-color-second;
+        border-radius: $border-radius-small;
+        font-size: 16px;
+        @include media('>phone') {
+            min-width: $input-small-min-width;
+            height: $input-height;
+            font-size: 20px;
+        }
+    }
+
+    .form__text {
+        max-width: $input-small-min-width;
     }
 }

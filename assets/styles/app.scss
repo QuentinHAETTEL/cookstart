@@ -7,12 +7,18 @@
 // ***** GENERICS *****
 @use 'generics/container' as *;
 @use 'generics/display' as *;
+@use 'generics/grid' as *;
 
 
 // ***** COMPONENTS *****
+@use 'components/aside' as *;
 @use 'components/header' as *;
+@use 'components/footer' as *;
 @use 'components/main' as *;
+@use 'components/menu' as *;
 @use 'components/box' as *;
+@use 'components/card' as *;
 @use 'components/form' as *;
 @use 'components/password-strength' as *;
 @use 'components/flash' as *;
+@use 'components/thumbnail' as *;
