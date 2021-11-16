@@ -1,13 +1,24 @@
+@use '../settings/borders' as *;
+@use '../settings/colors' as *;
+@use '../settings/sizing' as *;
 @use '../tools/display' as *;
 @use '../tools/media-query' as *;
 
 
 .container {
+    width: calc(100vw - #{$aside-min-width});
+    padding: 20px;
+    background-color: transparentize($secondary-color-third, 0.80);
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    overflow-x: hidden;
+    overflow-y: auto;
+
     &--light {
         @include flex($justify:stretch, $align:center);
         width: 80vw;
         min-height: 100vh;
-        margin: auto;
+        margin: 0 auto;
         @include media('>tablet') {
             width: 70vw;
             min-width: 1000px;

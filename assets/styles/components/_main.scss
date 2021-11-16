@@ -1,9 +1,11 @@
 @use '../settings/colors' as *;
 @use '../settings/sizing' as *;
+@use '../tools/display' as *;
 
 
 .main {
-    min-height: calc(100vh - #{$header-height});
+    @include flex();
+    height: calc(100vh - #{$header-height + $footer-height});
 
     &--light {
         min-height: 100vh;

@@ -38,7 +38,8 @@ class TwigRenderer implements RendererInterface
             'name' => App::getInstance()->getConfig()->get('app_name'),
             'get' => $request->getGetData(),
             'post' => $request->getPostData(),
-            'baseUrl' => BASE_URL
+            'baseUrl' => BASE_URL,
+            'uri' => BASE_URL . '/' . $request->getRedirectQueryString()
         ];
         $this->twig->addGlobal('app', $app);
 

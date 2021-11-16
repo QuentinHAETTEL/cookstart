@@ -1,0 +1,8 @@
+@use '../settings/sizing' as *;
+
+
+.footer {
+    width: 100vw;
+    height: $footer-height;
+    padding: 20px 100px;
+}

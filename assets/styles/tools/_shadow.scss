@@ -10,7 +10,7 @@
 }
 
 
-@mixin shadowSmall($direction:'all',$border-radius:'none') {
+@mixin shadowSmall($direction:'all', $border-radius:'none') {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     @include limitSide($direction, 5px, $border-radius);
 }

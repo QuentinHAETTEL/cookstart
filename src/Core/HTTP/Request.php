@@ -16,6 +16,19 @@ class Request
     }
 
 
+    /**
+     * @return false|string|null
+     */
+    public function getRedirectQueryString()
+    {
+        if (isset($_SERVER['REDIRECT_QUERY_STRING'])) {
+            return substr($_SERVER['REDIRECT_QUERY_STRING'], 5);
+        } else {
+            return null;
+        }
+    }
+
+
     public function isGetExists(?string $key = null): bool
     {
         if ($key === null) {
