@@ -24,8 +24,6 @@ $router->get('/reset-password', 'User', 'resetPassword');
 $router->get('/change-password', 'User', 'showChangePassword');
 $router->post('/change-password', 'User', 'changePassword');
 
-// TODO: retirer pour commit
 $router->get('/ingredients', 'Ingredient', 'index');
-$router->get('/ingredients/:id', 'Ingredient', 'show');
 
 $router->run();

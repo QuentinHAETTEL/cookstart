@@ -1,0 +1,27 @@
+@use '../settings/borders' as *;
+@use '../settings/fonts' as *;
+@use '../tools/display' as *;
+
+
+.thumbnail {
+
+    &--light {
+        @include flex($direction:column);
+        min-width: 130px;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    &__image {
+        width: auto;
+        height: 160px;
+        min-width: 100%;
+        border-radius: $border-radius;
+    }
+
+    &__title {
+        margin: 7px 0;
+        font-size: $medium-font;
+        text-align: center;
+    }
+}

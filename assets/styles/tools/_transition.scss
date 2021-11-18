@@ -1,0 +1,11 @@
+$timing-values: ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
+
+
+@mixin transition($timing:ease-in-out) {
+    transition: all 0.5s $timing;
+}
+
+
+@mixin transitionFast($timing:ease-in-out) {
+    transition: all 0.2s $timing;
+}

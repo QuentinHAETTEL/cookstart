@@ -1,0 +1,15 @@
+{% extends 'layout.twig' %}
+
+
+{% block content %}
+    <h1>{{ 'ingredients.title'|trans }}</h1>
+
+    <div class="grid">
+        {% for ingredient in ingredients %}
+            <div class="thumbnail--light">
+                <img class="thumbnail__image" src="{{ app.baseUrl ~ '/uploads/ingredients/' ~ ingredient.image }}" alt="" />
+                <p class="thumbnail__title">{{ ingredient.label }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

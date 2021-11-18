@@ -1,0 +1,21 @@
+@use '../tools/display' as *;
+
+
+.row {
+    position: relative;
+    @include flex($direction:row, $justify:flex-start, $wrap:wrap);
+    width: 100%;
+    margin-bottom: 20px;
+
+    &--around {
+        @include flex($justify:space-around);
+    }
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+}
