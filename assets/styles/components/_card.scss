@@ -1,0 +1,11 @@
+@use '../tools/display' as *;
+
+
+.card {
+    position: relative;
+    @include flex($direction:column, $align:center);
+
+    &__title {
+        text-align: center;
+    }
+}
