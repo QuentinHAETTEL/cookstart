@@ -11,7 +11,7 @@
 @mixin successErrorInput {
     padding: 0 45px 0 20px;
     background-repeat: no-repeat;
-    background-size: 5%;
+    background-size: 15px;
     background-position: 95%;
 }
 
@@ -39,6 +39,7 @@
         min-width: $input-min-width-mobile;
         height: $input-height-mobile;
         padding: 0 20px;
+        background-color: $white;
         border: solid 3px $secondary-color-second;
         border-radius: $border-radius-small;
         font-size: 16px !important;

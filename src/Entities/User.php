@@ -243,6 +243,16 @@ class User extends BaseEntity
     }
 
 
+    public function find(int $id): self
+    {
+        $q = new QueryBuilder();
+        $user = $q->select()->from($this->entity)->where('id = '.$id)->limit(1)->execute(get_class($this));
+        $user->setPassword('');
+
+        return $user;
+    }
+
+
     public function findByEmail(string $email): self
     {
         $q = new QueryBuilder();

@@ -2,12 +2,16 @@
 
 
 {% block content %}
-    <h1>{{ 'ingredients.title'|trans }}</h1>
+    <h1>{{ 'ingredients'|trans }}</h1>
 
-    <div class="grid">
+    <a class="button button--success" href="{{ app.baseUrl ~ '/ingredients/add' }}">
+        {{ 'ingredient.add'|trans }}
+    </a>
+
+    <div class="thumbnail-grid--light">
         {% for ingredient in ingredients %}
             <div class="thumbnail--light">
-                <img class="thumbnail__image" src="{{ app.baseUrl ~ '/uploads/ingredients/' ~ ingredient.image }}" alt="" />
+                <img class="thumbnail__image" src="{{ app.baseUrl ~ '/uploads/ingredients/' ~ ingredient.image }}" alt="{{ ingredient.label }}" />
                 <p class="thumbnail__title">{{ ingredient.label }}</p>
             </div>
         {% endfor %}

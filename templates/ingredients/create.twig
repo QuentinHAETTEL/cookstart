@@ -1,0 +1,40 @@
+{% extends 'layout.twig' %}
+
+
+{% block content %}
+    <div class="card">
+        <h1 class="card__title">{{ 'ingredient.add'|trans }}</h1>
+
+        <form id="add-ingredient-form" class="form form--animated" method="POST" action="" enctype="multipart/form-data">
+            <p class="flash" data-message></p>
+
+            <div class="row">
+                <input id="ingredient-label" class="form__input" name="label" type="text" placeholder="" required="required" />
+                <label for="ingredient-label" class="form__label">{{ 'ingredient.label'|trans }}</label>
+            </div>
+
+            <div class="row">
+                <input id="ingredient-image" class="form__input" name="image" type="file" placeholder="" required="required" />
+                <label for="ingredient-image" class="form__label">{{ 'ingredient.image'|trans }}</label>
+            </div>
+
+            <div class="row">
+                <select id="ingredient-unit" class="form__select" name="unit">
+                    <option value="" disabled="disabled">{{ 'unit.select'|trans }}</option>
+                    {% for unit in units %}
+                        <option value="{{ unit.id }}">{{ unit.label }}</option>
+                    {% endfor %}
+                </select>
+                <span class="form__select--arrow">
+                    <i class="fas fa-angle-down"></i>
+                </span>
+                <label for="ingredient-unit" class="form__label">{{ 'unit.title'|trans }}</label>
+            </div>
+
+            <div class="row row--around">
+                <button class="button button--error" type="reset">{{ 'global.cancel'|trans }}</button>
+                <button class="button" type="submit">{{ 'global.save'|trans }}</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

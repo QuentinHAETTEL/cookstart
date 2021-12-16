@@ -1,15 +1,44 @@
 @use '../settings/borders' as *;
+@use '../settings/colors' as *;
 @use '../settings/fonts' as *;
 @use '../tools/display' as *;
+@use '../tools/grid' as *;
+
+
+.thumbnail-grid {
+    @include grid(220px);
+}
+
+.thumbnail-grid--light {
+    @include grid(170px);
+    margin-top: 20px;
+}
 
 
 .thumbnail {
+    @include flex($direction:column);
+    width: 220px;
+    height: 250px;
+    color: $black;
+    background-color: $white;
+    border-radius: $border-radius;
+    text-decoration: none;
+    overflow: hidden;
 
     &--light {
         @include flex($direction:column);
         min-width: 130px;
         height: 200px;
         overflow: hidden;
+
+        .thumbnail__title {
+            text-align: center
+        }
+    }
+
+    &__content {
+        width: 100%;
+        padding: 10px;
     }
 
     &__image {
@@ -23,5 +52,17 @@
         margin: 7px 0;
         font-size: $medium-font;
         text-align: center;
+    }
+
+    &__icon-container {
+        @include flex($flex:inline-flex, $align:center);
+        width: 75px;
+    }
+
+    &__icon {
+        width: auto;
+        height: auto;
+        max-width: 20px;
+        max-height: 20px;
     }
 }

@@ -4,6 +4,8 @@ namespace App\Core;
 
 use App\Core\Database\QueryBuilder;
 use App\Core\Validator\Validator;
+use App\Entities\Unit;
+use MongoDB\Driver\Query;
 use ReflectionClass;
 use ReflectionException;
 
@@ -40,6 +42,12 @@ class BaseEntity
 
     private function hydrateField(string $name, $value): void
     {
+        if (substr($name, 0, 3) === 'id_') {
+            $entity = 'App\\Entities\\'.ucfirst(substr($name, 3));
+            $entity = new $entity();
+            $value = $entity->find($value);
+        }
+
         $method = $this->getMethodName($name, 'set');
         if (method_exists($this, $method)) {
             $this->$method($value);
@@ -49,6 +57,9 @@ class BaseEntity
 
     private function getMethodName(string $name, string $type = 'get'): string
     {
+        if (substr($name, 0, 3) === 'id_') {
+            $name = substr($name, 3);
+        }
         return $type . join(array_map('ucfirst', explode('_', $name)));
     }
 
@@ -212,11 +223,11 @@ class BaseEntity
      * Get all properties (excepted ManyToMany) and their type of the extended class (Ex: User class)
      * @throws ReflectionException
      */
-    private function getEntityProperties(): array
+    private function getEntityProperties(?string $entity = null): array
     {
         $properties = [];
-        foreach ($this->getAllProperties() as $property) {
-            if ($property->class === get_class($this)) {
+        foreach ($this->getAllProperties($entity) as $property) {
+            if ($property->class === get_class($this) || $property->class === $entity) {
                 preg_match('#@([A-Za-z]+)#', $property->getDocComment(), $phpDoc);
                 if (!array_key_exists(1, $phpDoc) || (array_key_exists(1, $phpDoc) && $phpDoc[1] !== 'ManyToMany')) {
                     $properties[$property->getName()] = $property->getType()->getName();
@@ -251,9 +262,14 @@ class BaseEntity
     /**
      * @throws ReflectionException
      */
-    private function getAllProperties(): array
+    private function getAllProperties(?string $entity = null): array
     {
-        $reflectionClass = new ReflectionClass(get_class($this));
+        $class = get_class($this);
+        if ($entity !== null) {
+            $class = $entity;
+        }
+
+        $reflectionClass = new ReflectionClass($class);
 
         return $reflectionClass->getProperties();
     }

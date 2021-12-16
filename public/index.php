@@ -25,5 +25,7 @@ $router->get('/change-password', 'User', 'showChangePassword');
 $router->post('/change-password', 'User', 'changePassword');
 
 $router->get('/ingredients', 'Ingredient', 'index');
+$router->get('/ingredients/add', 'Ingredient', 'showAdd');
+$router->post('/ingredients/add', 'Ingredient', 'add');
 
 $router->run();

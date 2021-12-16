@@ -18,7 +18,9 @@
         @include flex($justify:stretch, $align:center);
         width: 80vw;
         min-height: 100vh;
+        background-color: transparent;
         margin: 0 auto;
+        overflow: initial;
         @include media('>tablet') {
             width: 70vw;
             min-width: 1000px;

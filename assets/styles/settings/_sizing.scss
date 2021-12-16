@@ -1,8 +1,18 @@
 $header-height: 80px;
+$aside-min-width: 70px;
+$aside-max-width: 250px;
+$footer-height: 60px;
 
 $box-padding: 60px;
 
-$input-min-width: 350px;
-$input-min-width-mobile: 240px;
-$input-min-height: 60px;
-$input-min-height-mobile: 50px;
+$input-min-width: 70vw;
+$input-min-width-mobile: 100%;
+$input-height: 60px;
+$input-height-mobile: 50px;
+$input-small-min-width: 350px;
+$input-small-min-width-mobile: 240px;
+
+$textarea-height-mobile: $input-height-mobile * 3;
+$textarea-height: $input-height * 3;
+
+$button-height: 50px;

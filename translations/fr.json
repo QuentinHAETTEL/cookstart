@@ -1,7 +1,9 @@
 {
     "global": {
         "goBack": "Retour",
-        "confirm": "Valider"
+        "confirm": "Valider",
+        "cancel": "Annuler",
+        "save": "Sauvegarder"
     },
     "auth": {
         "hello": "Hello",
@@ -28,10 +30,27 @@
     "assets": {
         "menuIconAlt": "Icône menu",
         "ingredientsIconAlt": "Icône ingrédient",
-        "recipesIconAlt": "Icône recette"
+        "recipesIconAlt": "Icône recette",
+        "preparationTimeIconAlt": "Icône temps de préparation",
+        "cookingTimeIconAlt": "Icône temps de cuisson"
     },
     "menu": {
         "ingredients": "Ingrédients",
         "recipes": "Recettes"
+    },
+    "ingredients": "Ingrédients",
+    "ingredient": {
+        "add": "Ajouter un ingrédient",
+        "label": "Libellé",
+        "image": "Image"
+    },
+    "unit": {
+        "title": "Unités",
+        "select": "Choisir une unité"
+    },
+    "recipes": {
+        "title": "Recettes",
+        "preparationTime": "Temps de préparation",
+        "cookingTime": "Temps de cuisson"
     }
 }
