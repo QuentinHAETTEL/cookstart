@@ -1,4 +1,4 @@
-import { validateEmailInput, validateTextInput, validatePasswordInput, checkPasswords } from './validator';
+import { validateEmailInput, validateTextInput, validatePasswordInput, checkFields, checkPasswords } from './validator';
 import { xhrRequest } from './xhr';
 import { displayMessage } from './flash';
 import { redirectToHomepage, redirectTo } from './router';
@@ -204,21 +204,6 @@ function checkPasswordFields(passwordInputs, validationButton)
     passwordInputs[1].addEventListener('blur', function () {
         checkPasswords(passwordInputs[0], passwordInputs[1], validationButton);
     });
-}
-
-
-function checkFields(inputs, validationButton)
-{
-    let isValid = true;
-    inputs.forEach(function (input) {
-        if (input.type === 'text') {
-            isValid = isValid && validateTextInput(input, validationButton);
-        } else if (input.type === 'password') {
-            isValid = isValid && validatePasswordInput(input, validationButton);
-        }
-    });
-
-    return isValid;
 }
 
 

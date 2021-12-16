@@ -1,6 +1,6 @@
 export function validateTextInput(input, submitButton)
 {
-    let valid = input.value.length >= 0 && input.value.length <= 255;
+    let valid = input.value.length > 0 && input.value.length <= 255;
     if (valid) {
         displayValidation('success', input, submitButton);
     } else {
@@ -36,6 +36,53 @@ export function validatePasswordInput(input, submitButton)
     }
 
     return valid;
+}
+
+
+export function validateFileInput(input, submitButton, fileType = 'image')
+{
+    const allowedImageFormats = ['png', 'jpg', 'jpeg'];
+    const allowedDocumentFormats = ['pdf'];
+    let fileName = input.value;
+    let fileExtension = fileName.substr(fileName.lastIndexOf('.') + 1, fileName.length).toLowerCase();
+
+    let validExtension;
+    if (fileType === 'image') {
+        validExtension = allowedImageFormats.includes(fileExtension);
+    } else {
+        validExtension = allowedDocumentFormats.includes(fileExtension);
+    }
+
+    if (validExtension) {
+        displayValidation('success', input, submitButton);
+    } else {
+        displayValidation('error', input, submitButton);
+    }
+}
+
+
+export function validateSelect(input, submitButton)
+{
+    if (input.value) {
+        displayValidation('success', input, submitButton);
+    } else {
+        displayValidation('error', input, submitButton);
+    }
+}
+
+
+export function checkFields(inputs, validationButton)
+{
+    let isValid = true;
+    inputs.forEach(function (input) {
+        if (input.type === 'text') {
+            isValid = isValid && validateTextInput(input, validationButton);
+        } else if (input.type === 'password') {
+            isValid = isValid && validatePasswordInput(input, validationButton);
+        }
+    });
+
+    return isValid;
 }
 
 

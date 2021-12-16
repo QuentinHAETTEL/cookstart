@@ -2,6 +2,8 @@ import '@fortawesome/fontawesome-free/js/all.js';
 
 import { registerLogin, register, confirmAccount, login, reset, changePassword } from './Core/security';
 import { visibleIndication, visiblePassword } from './Core/HTML/visible';
+import { toggleMenu } from './Core/HTML/menu';
+import { addIngredient } from './components/ingredients';
 
 window.addEventListener('DOMContentLoaded', function () {
 
@@ -14,4 +16,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
     visibleIndication();
     visiblePassword();
+
+    toggleMenu();
+
+    addIngredient();
 });
