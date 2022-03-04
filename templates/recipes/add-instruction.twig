@@ -1,0 +1,19 @@
+{% extends 'recipes/show.twig' %}
+
+
+{% block addInstructions %}
+    <form id="add-recipe-instruction-form" class="form form--animated" method="POST">
+        <p class="flash" data-message></p>
+
+        <input name="recipe" type="hidden" value="{{ recipe.id }}" />
+
+        <div class="row">
+            <input id="recipe-instruction" class="form__input" name="instruction" type="text" placeholder="" required="required" />
+            <label for="recipe-instruction" class="form__label">{{ 'recipe.instruction'|trans }}</label>
+        </div>
+
+        <div class="row row--around">
+            <button class="button" type="submit">{{ 'global.add'|trans }}</button>
+        </div>
+    </form>
+{% endblock %}

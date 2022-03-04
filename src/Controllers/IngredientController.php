@@ -111,4 +111,13 @@ class IngredientController extends BaseController
         $this->ingredient->save();
         return $response->jsonResponse('/ingredients', Response::SUCCESS_STATUS);
     }
+
+
+    public function getUnit(int $id): Response
+    {
+        $ingredient = $this->ingredient->find($id);
+
+        $response = new Response();
+        return $response->jsonResponse($ingredient->getUnit()->getLabel(), Response::SUCCESS_STATUS);
+    }
 }

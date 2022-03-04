@@ -12,7 +12,7 @@ button, .button {
     min-width: 100%;
     height: $button-height;
     margin: 10px;
-    padding: 10px 50px;
+    padding: 10px 35px;
     color: $black;
     background-color: $secondary-color-second;
     border: solid 1px $secondary-color-second;
@@ -27,6 +27,7 @@ button, .button {
     }
     @include media('>phone') {
         min-width: 200px;
+        padding: 10px 50px;
     }
     &:disabled, .disabled {
         filter: grayscale(75%);

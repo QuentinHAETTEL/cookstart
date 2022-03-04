@@ -1,0 +1,33 @@
+{% extends 'recipes/show.twig' %}
+
+
+{% block addIngredients %}
+   <form id="add-recipe-ingredient-form" class="form form--animated" method="POST">
+        <p class="flash" data-message></p>
+
+        <input name="recipe" type="hidden" value="{{ recipe.id }}" />
+
+        <div class="row">
+            <select id="recipe-ingredient" class="form__select" name="ingredient">
+                <option value="" disabled="disabled">{{ 'ingredient.select'|trans }}</option>
+                {% for ingredient in ingredients %}
+                    <option value="{{ ingredient.id }}" data-unit="{{ ingredient.unit.label }}">{{ ingredient.label }}</option>
+                {% endfor %}
+            </select>
+            <span class="form__select--arrow">
+                <i class="fas fa-angle-down"></i>
+            </span>
+            <label for="recipe-ingredient" class="form__label">{{ 'recipe.ingredient'|trans }}</label>
+        </div>
+
+        <div class="row">
+            <input id="recipe-unit" class="form__input" name="quantity" type="number" placeholder="" required="required" />
+            <label for="recipe-unit" class="form__label">{{ 'ingredient.quantity'|trans }}</label>
+            <span id="recipe-unit-label"></span>
+        </div>
+
+        <div class="row row--around">
+            <button class="button" type="submit">{{ 'global.add'|trans }}</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'layout.twig' %}
+
+
+{% block content %}
+    <div class="card">
+        <h1 class="card__title">{{ 'recipe.add'|trans }}</h1>
+
+        <form id="add-recipe-form" class="form form--animated" method="POST" action="" enctype="multipart/form-data">
+            <p class="flash" data-message></p>
+
+            <div class="row">
+                <input id="recipe-label" class="form__input" name="label" type="text" placeholder="" required="required" />
+                <label for="recipe-label" class="form__label">{{ 'recipe.label'|trans }}</label>
+            </div>
+
+            <div class="row">
+                <textarea id="recipe-description" class="form__input" name="description"></textarea>
+                <label for="recipe-description" class="form__label">{{ 'recipe.description'|trans }}</label>
+            </div>
+
+            <div class="row">
+                <input id="recipe-image" class="form__input" name="image" type="file" placeholder="" required="required" />
+                <label for="recipe-image" class="form__label">{{ 'recipe.image'|trans }}</label>
+            </div>
+
+            <div class="row">
+                <input id="recipe-people" class="form__input" name="people" type="number" placeholder="" required="required" />
+                <label for="recipe-people" class="form__label">{{ 'recipe.people'|trans }}</label>
+            </div>
+
+            <div class="row">
+                <input id="recipe-preparation-time" class="form__input" name="preparationTime" type="time" placeholder="" required="required" />
+                <label for="recipe-preparation-time" class="form__label">{{ 'recipe.preparationTime'|trans }}</label>
+            </div>
+
+            <div class="row">
+                <input id="recipe-cooking-time" class="form__input" name="cookingTime" type="time" placeholder="" required="required" />
+                <label for="recipe-cooking-time" class="form__label">{{ 'recipe.cookingTime'|trans }}</label>
+            </div>
+
+            <div class="row row--around">
+                <button class="button button--error" type="reset">{{ 'global.goBack'|trans }}</button>
+                <button class="button" type="submit">{{ 'global.next'|trans }}</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

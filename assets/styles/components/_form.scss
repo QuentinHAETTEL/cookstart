@@ -35,6 +35,18 @@
 .form {
     @include flex($direction:column, $justify:center, $align:center);
 
+    &__container {
+        min-width: $input-min-width-mobile;
+        min-height: 200px;
+        padding: 0 20px;
+        background-color: $white;
+        border: solid 3px $secondary-color-second;
+        border-radius: $border-radius-small;
+        @include media('>phone') {
+            min-width: $input-min-width;
+        }
+    }
+
     &__input, &__textarea, &__select {
         min-width: $input-min-width-mobile;
         height: $input-height-mobile;
@@ -124,7 +136,7 @@
         }
     }
 
-    .form__input, .form__textarea, .form__select {
+    .form__input, .form__textarea, .form__select, .form__container {
         outline: $secondary-color-second;
         &:focus, &:not(:placeholder-shown) {
             ~ .form__label {

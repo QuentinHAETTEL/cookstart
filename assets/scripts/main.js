@@ -4,6 +4,7 @@ import { registerLogin, register, confirmAccount, login, reset, changePassword }
 import { visibleIndication, visiblePassword } from './Core/HTML/visible';
 import { toggleMenu } from './Core/HTML/menu';
 import { addIngredient } from './components/ingredients';
+import { addRecipe, addRecipeIngredient } from './components/recipe';
 
 window.addEventListener('DOMContentLoaded', function () {
 
@@ -20,4 +21,6 @@ window.addEventListener('DOMContentLoaded', function () {
     toggleMenu();
 
     addIngredient();
+    addRecipe();
+    addRecipeIngredient();
 });

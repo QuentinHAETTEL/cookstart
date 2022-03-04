@@ -10,6 +10,7 @@ use App\Core\Translator\TranslatorException;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
+use Twig\Extension\CoreExtension;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
@@ -33,6 +34,7 @@ class TwigRenderer implements RendererInterface
         $loader = new FilesystemLoader($path);
         $this->twig = new Environment($loader, $parameters);
         $this->twig->addExtension(new DebugExtension());
+        $this->twig->getExtension(CoreExtension::class)->setTimezone('+00:00 GMT');
 
         $app = [
             'name' => App::getInstance()->getConfig()->get('app_name'),
