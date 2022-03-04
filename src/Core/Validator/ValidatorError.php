@@ -15,7 +15,8 @@ class ValidatorError
         'maxlength' => 'Le champ %s doit contenir au maximum of %d caractères',
         'email' => 'Le champ %s doit être une adresse email valide',
         'boolean' => 'Le champ %s doit être un booléen',
-        'datetime' => 'Le champ %s doit être une date valide (%d)',
+        'int' => 'Le champ %s doit être un nombre',
+        'datetime' => 'Le champ %s doit être une date valide (%d)'
     ];
 
 

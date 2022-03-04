@@ -85,6 +85,17 @@ class Validator
     }
 
 
+    public function isInt(string $key): self
+    {
+        $value = $this->getValue($key);
+        if (!is_numeric($value)) {
+            $this->addError($key, 'int');
+        }
+
+        return $this;
+    }
+
+
     public function isDateTime(string $key, string $format = 'Y-m-d H:i:s'): self
     {
         $value = $this->getValue($key);

@@ -1,0 +1,51 @@
+{% extends 'layout.twig' %}
+
+
+{% block content %}
+    <h1>{{ recipe.label }}</h1>
+
+    <img class="image" src="{{ app.baseUrl ~ '/uploads/recipes/' ~ recipe.image }}" alt="{{ recipe.label }}" />
+    <p>{{ recipe.description }}</p>
+
+    <div>
+        <img class="thumbnail__icon" src="{{ app.baseUrl  }}/images/icons/preparation-time.svg" alt="{{ 'assets.preparationTimeIconAlt'|trans }}" />
+        <span>{{ recipe.preparationTime|date('H:i') }}</span>
+        <img class="thumbnail__icon" src="{{ app.baseUrl  }}/images/icons/cooking-time.svg" alt="{{ 'assets.cookingTimeIconAlt'|trans }}" />
+        <span>{{ recipe.preparationTime|date('H:i') }}</span>
+    </div>
+
+    <p>{{ 'recipe.people'|trans }} : {{ recipe.people }}</p>
+
+    <ul>
+        {% for recipeIngredient in recipe.recipeIngredients %}
+            <li>
+                {{ recipeIngredient.quantity }} {{ recipeIngredient.ingredient.unit.code }} de {{ recipeIngredient.ingredient.label }}
+                <a class="text-danger" href="{{ app.baseUrl ~ '/recipes/' ~ recipe.id ~ '/remove-ingredient/' ~ recipeIngredient.ingredient.id }}">
+                    <i class="fas fa-times"></i>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% block addIngredients %}
+        <a class="button button--success" href="{{ app.baseUrl ~ '/recipes/' ~ recipe.id ~ '/add-ingredient' }}">
+            {{ 'recipe.addIngredient'|trans }}
+        </a>
+    {% endblock %}
+
+    <ol>
+        {% for instruction in recipe.instructions %}
+            <li>{{ instruction }}</li>
+        {% endfor %}
+    </ol>
+
+    {% block addInstructions %}
+        <a class="button button--success" href="{{ app.baseUrl ~ '/recipes/' ~ recipe.id ~ '/add-instruction' }}">
+            {{ 'recipe.addInstruction'|trans }}
+        </a>
+    {% endblock %}
+
+    <a class="button button--error" href="{{ app.baseUrl ~ '/recipes/' ~ recipe.id ~ '/delete' }}">
+        {{ 'global.delete'|trans }}
+    </a>
+{% endblock %}

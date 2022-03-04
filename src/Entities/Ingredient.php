@@ -75,4 +75,21 @@ class Ingredient extends BaseEntity
         $this->unit = $unit;
         return $this;
     }
+
+
+    public function findAllNotSelected(Recipe $recipe): array
+    {
+        $selectedIngredients = [];
+        foreach ($recipe->getIngredients($recipe->getId()) as $selectedIngredient) {
+            $selectedIngredients[] = $selectedIngredient->getId();
+        }
+
+        $unselectedIngredients = [];
+        foreach ($this->getAll() as $ingredient) {
+            if (!in_array($ingredient->getId(), $selectedIngredients)) {
+                $unselectedIngredients[] = $ingredient;
+            }
+        }
+        return $unselectedIngredients;
+    }
 }

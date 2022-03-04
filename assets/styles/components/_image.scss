@@ -1,0 +1,11 @@
+@use '../settings/borders' as *;
+@use '../tools/media-query' as *;
+
+
+.image {
+    width: 100%;
+    border-radius: $border-radius;
+    @include media('>phone') {
+        width: 500px;
+    }
+}

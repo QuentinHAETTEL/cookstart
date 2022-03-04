@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Core\Data\DataTransformer;
 use App\Core\Database\QueryBuilder;
 use App\Core\Validator\Validator;
 use App\Entities\Unit;
@@ -21,7 +22,9 @@ class BaseEntity
     {
         if ($this->entity === null) {
             $class = explode('\\', get_class($this));
-            $this->entity = strtolower(end($class)).'s';
+            $entity = preg_split('#(?=[A-Z])#', end($class));
+            array_shift($entity);
+            $this->entity = strtolower(implode('s_', $entity).'s');
         }
     }
 
@@ -154,14 +157,22 @@ class BaseEntity
     public function save()
     {
         $values = [];
-        // Prepare properties for the query
-        foreach ($this->getEntityProperties() as $property => $type) {
+        // Prepare persisted properties for the query
+        foreach ($this->getPersistedEntityProperties() as $property => $type) {
+            if ($type === 'array') {
+                $property = rtrim($property, 'List').'s';
+            }
+
             $method = $this->getMethodName($property);
             $property = strtolower(join('_', preg_split('#(?=[A-Z])#', $property)));
             if (method_exists($this, $method)) {
                 if (strpos($type, '\\')) {
                     // If property is a OneToMany or ManyToMany relation, get the ID of the property
                     $values['id_'.$property] = $this->$method()->getId();
+                } elseif ($type === 'array') {
+                    // If property is an array, transform it to a string
+                    $dataTransformer = new DataTransformer();
+                    $values[$property] = $dataTransformer->arrayToStringArray($this->$method());
                 } else {
                     $values[$property] = $this->$method();
                 }
@@ -220,16 +231,16 @@ class BaseEntity
 
 
     /**
-     * Get all properties (excepted ManyToMany) and their type of the extended class (Ex: User class)
+     * Get all persisted properties (excepted ManyToMany) and their type of the extended class (Ex: User class)
      * @throws ReflectionException
      */
-    private function getEntityProperties(?string $entity = null): array
+    private function getPersistedEntityProperties(?string $entity = null): array
     {
         $properties = [];
         foreach ($this->getAllProperties($entity) as $property) {
             if ($property->class === get_class($this) || $property->class === $entity) {
                 preg_match('#@([A-Za-z]+)#', $property->getDocComment(), $phpDoc);
-                if (!array_key_exists(1, $phpDoc) || (array_key_exists(1, $phpDoc) && $phpDoc[1] !== 'ManyToMany')) {
+                if (!array_key_exists(1, $phpDoc) || (array_key_exists(1, $phpDoc) && $phpDoc[1] !== 'ManyToMany' && $phpDoc[1] !== 'NotPersisted')) {
                     $properties[$property->getName()] = $property->getType()->getName();
                 }
             }

@@ -3,7 +3,10 @@
         "goBack": "Retour",
         "confirm": "Valider",
         "cancel": "Annuler",
-        "save": "Sauvegarder"
+        "save": "Sauvegarder",
+        "next": "Suivant",
+        "add": "Ajouter",
+        "delete": "Supprimer"
     },
     "auth": {
         "hello": "Hello",
@@ -42,15 +45,26 @@
     "ingredient": {
         "add": "Ajouter un ingrédient",
         "label": "Libellé",
-        "image": "Image"
+        "image": "Image",
+        "select": "Choisir un ingrédient",
+        "quantity": "Quantité"
     },
     "unit": {
         "title": "Unités",
         "select": "Choisir une unité"
     },
-    "recipes": {
-        "title": "Recettes",
+    "recipes": "Recettes",
+    "recipe": {
+        "add": "Ajouter une recette",
+        "addIngredient": "Ajouter un ingredient",
+        "addInstruction": "Ajouter une instruction",
+        "label": "Libellé",
+        "description": "Description",
+        "image": "Image",
+        "people": "Nombre de personnes",
         "preparationTime": "Temps de préparation",
-        "cookingTime": "Temps de cuisson"
+        "cookingTime": "Temps de cuisson",
+        "ingredient": "Ingrédient",
+        "instruction": "Instruction"
     }
 }

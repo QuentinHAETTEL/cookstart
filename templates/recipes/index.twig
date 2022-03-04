@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+
+{% block content %}
+    <h1>{{ 'recipes'|trans }}</h1>
+
+    <a class="button button--success" href="{{ app.baseUrl ~ '/recipes/add' }}">
+        {{ 'recipe.add'|trans }}
+    </a>
+
+    <div class="thumbnail-grid">
+        {% for recipe in recipes %}
+            <a class="thumbnail" href="{{ app.baseUrl ~ '/recipes/' ~ recipe.id }}">
+                <img class="thumbnail__image" src="{{ app.baseUrl ~ '/uploads/recipes/' ~ recipe.image }}" alt="{{ recipe.label }}" />
+                <div class="thumbnail__content">
+                    <p class="thumbnail__title">{{ recipe.label }}</p>
+                    <div>
+                        <span class="thumbnail__icon-container" title="{{ 'recipe.preparationTime'|trans }}">
+                            <img class="thumbnail__icon" src="{{ app.baseUrl  }}/images/icons/preparation-time.svg" alt="{{ 'assets.preparationTimeIconAlt'|trans }}" />
+                            <span>{{ recipe.preparationTime|date('H:i') }}</span>
+                        </span>
+                        <span class="thumbnail__icon-container" title="{{ 'recipe.cookingTime'|trans }}">
+                            <img class="thumbnail__icon" src="{{ app.baseUrl  }}/images/icons/cooking-time.svg" alt="{{ 'assets.cookingTimeIconAlt'|trans }}" />
+                            <span>{{ recipe.cookingTime|date('H:i') }}</span>
+                        </span>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

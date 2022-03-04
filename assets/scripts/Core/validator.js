@@ -11,6 +11,33 @@ export function validateTextInput(input, submitButton)
 }
 
 
+export function validateNumberInput(input, submitButton)
+{
+    let valid = !isNaN(parseInt(input.value));
+    if (valid) {
+        displayValidation('success', input, submitButton);
+    } else {
+        displayValidation('error', input, submitButton);
+    }
+
+    return valid;
+}
+
+
+export function validateTimeInput(input, submitButton)
+{
+    const regex = /^([0-6][0-6]):([0-6][0-6])$/;
+
+    let valid = regex.test(input.value);
+    if (valid) {
+        displayValidation('success', input, submitButton);
+    } else {
+        displayValidation('error', input, submitButton);
+    }
+
+    return valid;
+}
+
 export function validateEmailInput(input, submitButton)
 {
     const regex = /^([a-z0-9_\+\-]+)(\.[a-z0-9_\+\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,4}$/;
@@ -54,6 +81,16 @@ export function validateFileInput(input, submitButton, fileType = 'image')
     }
 
     if (validExtension) {
+        displayValidation('success', input, submitButton);
+    } else {
+        displayValidation('error', input, submitButton);
+    }
+}
+
+
+export function validateTextarea(input, submitButton)
+{
+    if (input.value) {
         displayValidation('success', input, submitButton);
     } else {
         displayValidation('error', input, submitButton);
